@@ -15,8 +15,10 @@ service ReportServer {
 message RegisterReq{
     // unix时间戳，单位s
     int64 timestamp =1;
+    // 该主机需要监控的指标
+    repeated string metrics=2;
     // 描述
-    string description=2;
+    string description=3;
 }
 
 // 注册成功后返回的参数
