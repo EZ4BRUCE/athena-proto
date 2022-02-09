@@ -17,8 +17,10 @@ message RegisterReq{
     int64 timestamp =1;
     // 该主机需要监控的指标
     repeated string metrics=2;
+    // 异常检查时间（多少秒未上报为异常）
+    int32 checkAliveTime=3;
     // 描述
-    string description=3;
+    string description=4;
 }
 
 // 注册成功后返回的参数
