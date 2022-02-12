@@ -4,10 +4,9 @@ package report;
 
 // 上报服务
 service ReportServer {
-
+    // 服务注册
     rpc Register(RegisterReq) returns (RegisterRsp){}
-
-    // ReportServer
+    // 上报信息
     rpc Report(ReportReq) returns (ReportRsp){}
 }
 
@@ -19,8 +18,10 @@ message RegisterReq{
     repeated string metrics=2;
     // 异常检查时间（多少秒未上报为异常）
     int32 checkAliveTime=3;
+    // 聚合时间（多少个单位时间），如果上报为零值（0）则使用告警系统默认值
+    int32 aggregationTime=4;
     // 描述
-    string description=4;
+    string description=5;
 }
 
 // 注册成功后返回的参数
@@ -46,6 +47,7 @@ message ReportReq{
     // 上报值
     double value =5;
 }
+
 // 返回结构
 message ReportRsp{
     // 返回码
